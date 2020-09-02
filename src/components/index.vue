@@ -91,43 +91,66 @@ export default {
       const chartsDom = document.getElementById('content-chart')
       this.myChart = Echarts.init(chartsDom)
       this.myChart.setOption({
+        // x轴
         xAxis: {
+          //  xAxis. type = 'category'string
+          // 坐标轴类型。
+          // 可选：
+          // 'value' 数值轴，适用于连续数据。
+          // 'category' 类目轴，适用于离散的类目数据。为该类型时类目数据可自动从 series.data 或 dataset.source 中取，或者可通过 xAxis.data 设置类目数据。
+          // 'time' 时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
+          // 'log' 对数轴。适用于对数数据。
           type: 'category',
+          // 是否展示X轴
           show: false
         },
         yAxis: {
+          // 使用min和max来限制场高度
           min: 0,
           max: 350,
+          // 是否展示ys轴
           show: false
         },
         series: [
           {
+            // 图表的样式 折线图
             type: 'line',
+            // 图表的数据
             data: mockData,
+            // 平滑的曲线
             smooth: true,
+            // 面积的样式
             areaStyle: {
               color: 'rgba(75,193,252,.5)'
             },
+            // 线的样式
             lineStyle: {
               width: 4,
               color: 'rgba(75,193,252,1)'
             },
+            // 线上点的样式
             itemStyle: {
               borderWidth: 8,
               color: 'rgba(75,193,252,1)'
             }
           }
         ],
+        // 整个echarts的位置
         grid: {
           top: 0,
           bottom: 0,
           left: -30,
           right: -30
         },
+        // echarts页面提示
         tooltip: {
+          // 触发的方式
           trigger: 'axis',
+          // 坐标轴指示器，坐标轴触发有效，
           axisPointer: {
+            // 默认为line，line直线，cross十字准星，shadow阴影
             type: 'cross',
+            // 线的颜色
             label: {
               backgroundColor: '#6a7985'
             }
